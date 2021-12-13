@@ -1,6 +1,7 @@
 package com.tecwec.exam_prep
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -16,7 +17,9 @@ class Intent1 : AppCompatActivity() {
         val openApp:Button=findViewById(R.id.openAppIntent)
         val openurl:Button=findViewById(R.id.openUrlIntent)
         val call:Button=findViewById(R.id.callIntent)
-        val messsage:Button=findViewById(R.id.messageIntent)
+        val message:Button=findViewById(R.id.messageIntent)
+        val map:Button=findViewById(R.id.mapId)
+
 
 
 
@@ -31,8 +34,29 @@ class Intent1 : AppCompatActivity() {
             startActivity(nextAct)
         }
 
-        openApp.setOnClickListener {
-            var intent=Intent()
+////Implict Intent
+        openurl.setOnClickListener {
+            var intent=Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse("https://www.youtube.com/watch?v=n9opDf7CL4g")
+            startActivity(intent)
+        }
+
+        message.setOnClickListener {
+            val intent=Intent(Intent.ACTION_SENDTO)
+            intent.data = Uri.parse("sms:123456789")
+            startActivity(intent)
+        }
+
+        call.setOnClickListener {
+            val intent=Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse("tel:123456789")
+            startActivity(intent)
+        }
+
+        map.setOnClickListener {
+            val intent=Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse("geo:0,0?q=patna")
+            startActivity(intent)
         }
 
     }

@@ -81,4 +81,14 @@
         app:layout_constraintHorizontal_bias="0.568"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/openUrlIntent" />
+
+    <Button
+        android:id="@+id/mapId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="open map"
+        app:layout_constraintEnd_toEndOf="@+id/messageIntent"
+        app:layout_constraintStart_toStartOf="@+id/messageIntent"
+        app:layout_constraintTop_toBottomOf="@+id/messageIntent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
