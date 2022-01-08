@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "765952280337",
+    "project_id": "griffinlpu-2b297",
+    "storage_bucket": "griffinlpu-2b297.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:765952280337:android:1e15d8cb8c322fed92eeb0",
+        "android_client_info": {
+          "package_name": "com.tecwec.griffinlpu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "765952280337-4puqeme0b8t9rmeegruoc7oq9uv5avun.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAwpceyFrKJdnfC3Nk4nvD1lcgQ5qqOdY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "765952280337-4puqeme0b8t9rmeegruoc7oq9uv5avun.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
