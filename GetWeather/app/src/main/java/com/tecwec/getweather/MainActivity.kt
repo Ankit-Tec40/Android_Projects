@@ -2,17 +2,37 @@ package com.tecwec.getweather
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
+import java.util.jar.Manifest
+import androidx.core.app.ActivityCompat
+
+import android.content.pm.PackageManager
+
+
+
+
 class MainActivity : AppCompatActivity() {
+    lateinit var time:String
+    lateinit var temperature:String
+    lateinit var windSpeed:String
+    lateinit var icon:String
+    lateinit var myLocation:String
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         var recyclerView=findViewById<RecyclerView>(R.id.rv_containerID)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager=LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+
+        //All Functions
+        //Permissions
+        askPermissions()
 
         var rvData:List<RV_data> = listOf(
             RV_data("4:55","46","74","data:image/png;base64,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")
@@ -25,4 +45,32 @@ class MainActivity : AppCompatActivity() {
         var rvAdapter=RV_adapter(rvData)
         recyclerView.adapter=rvAdapter
     }
+
+
+    private fun askPermissions(){
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this@MainActivity, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION), 1)
+        }
+    }
+
+//    fun getLocation(longitude:Double,latitude:Double){
+//        myLocation="Not Found"
+//
+//    }
+//
+    fun getWeatherData(){
+        var cityName="patna"
+        var url="http://api.weatherapi.com/v1/current.json?key=15a701cbb84e403285982054210709&q=$cityName &aqi=no"
+
+    }
+//
+//    fun showData(){
+//
+//    }
+
+//    fun whenStart(){
+//
+//    }
+
 }
